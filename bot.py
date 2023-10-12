@@ -8,7 +8,16 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands = 'start')
 async def cmd_start(message: types.Message):
-    await bot.send_message(message.chat.id, 'Чтобы получить ответы пришли вариант КИМ kompege')
+    await bot.send_message(message.chat.id, 'Чтобы получить ответы пришли вариант КИМ kompege \nse_ve ImCocos  /help')
+
+@dp.message_handler(commands='help')
+async def cmd_help(message: types.Message):
+    await message.answer("Команды бота: \n\n /help \n /start \n /about \n\n\n Если бот не прислал ответ, проверьте правильность КИМа")
+
+@dp.message_handler(commands='about')
+async def cmd_help(message: types.Message):
+    await message.answer("Создатель бота: se_ve и ImCocos \n По любым вопросам: \n  koshakikosh@yandex.ru \n  sobakisab@yandex.ru \nПриятного использования!")
+
 
 @dp.message_handler(content_types=["text"])
 async def echo_message(message):
