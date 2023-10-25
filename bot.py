@@ -23,10 +23,7 @@ async def cmd_help(message: types.Message):
 async def echo_message(message):
         data = rq.get(f"https://kompege.ru/api/v1/variant/kim/{message.text}").json()["tasks"]
         for i, task in enumerate(data):
-           if ("\n" in task["key"]):
-                print('123123123')
-                task["key"] = str(task["key"]).replace("\n", " ")
            await bot.send_message(message.chat.id, f"№ {i+1}, Ответ {task['key']}")
 
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=False)
+    executor.start_polling(dp, skip_updates=True)
